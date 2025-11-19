@@ -1,5 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { randomUUID } from "crypto";
 import { z } from "zod";
 
 const GITHUB_URL = "https://api.github.com";
@@ -404,9 +406,9 @@ Provide comprehensive analysis reports in markdown format.`,
     }
   );
 
-  const transport = new StdioServerTransport();
+  const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: () => randomUUID(),});
   await server.connect(transport);
-  console.error("Github mcp running on stdio");
+  console.error("Github mcp running on localhost");
 }
 
 main().catch((error) => {
