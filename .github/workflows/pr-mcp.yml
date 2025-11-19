@@ -23,13 +23,17 @@ jobs:
       - name: Compile TypeScript
         run: npm run build
 
-      - name: Start MCP Server
-        run: node ./build/index.js &
-      
-      - name: Wait for MCP Server to start
-        run: sleep 5
+      - name: Start MCP HTTP server in background
+        env:
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.pull_request.base.repo.name }}
+          PULL_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node ./build/index.js &
+          sleep 5   # wait for server to start
 
-      - name: Analyze PR and Post Comment
+      - name: Run MCP Tool via HTTP
         env:
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.pull_request.base.repo.name }}
