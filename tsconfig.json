@@ -3,13 +3,13 @@
     "target": "ES2022",
     "module": "Node16",
     "moduleResolution": "Node16",
-    "outDir": "GithubCheck/build",
-    "rootDir": "./src",
+    "outDir": "build",
+    "rootDir": "src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
+  "include": ["GithubCheck/src/**/*"],
   "exclude": ["GithubCheck/node_modules"]
 }
