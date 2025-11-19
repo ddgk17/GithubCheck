@@ -10,6 +10,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["GithubCheck/src/**/*"],
-  "exclude": ["GithubCheck/node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
