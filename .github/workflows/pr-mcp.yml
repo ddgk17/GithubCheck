@@ -25,8 +25,8 @@ jobs:
 
       - name: Run MCP Server for PR
         env:
-          PR_OWNER: ${{ github.repository_owner }}
-          PR_REPO: ${{ github.event.pull_request.base.repo.name }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.pull_request.base.repo.name }}
+          PULL_NUMBER: ${{ github.event.pull_request.number }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node ./run-mcp.js
+        run: node ./build/index.js
